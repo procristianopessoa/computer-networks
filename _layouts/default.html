@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'pt-BR' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/catalogo.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="{{ '/' | relative_url }}">IFSP · Redes de Computadores</a>
+        <span>Compreender · Observar · Aplicar</span>
+      </div>
+    </header>
+    <main class="wrap">{{ content }}</main>
+    <footer class="wrap">© 2026 · IFSP · Prof. Cristiano Pessoa</footer>
+  </body>
+</html>

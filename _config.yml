@@ -1,0 +1,9 @@
+title: Redes de Computadores · IFSP
+description: Material interativo de Redes de Computadores do IFSP.
+author: Prof. Cristiano Pessoa
+lang: pt-BR
+markdown: kramdown
+permalink: pretty
+exclude:
+  - Gemfile
+  - Gemfile.lock
