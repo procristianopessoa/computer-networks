@@ -12,10 +12,81 @@ import { History } from "./History";
 import { Networks } from "./Networks";
 import { Encapsulation } from "./Encapsulation";
 import { Signals } from "./Signals";
+import { Ethernet } from "./Ethernet";
+import { Access } from "./Access";
+import { Switching } from "./Switching";
+import { Segmentation } from "./Segmentation";
+import { Subnetting, Vlsm } from "./Addressing";
+import { Routing } from "./Routing";
+import { Diagnosis } from "./Diagnosis";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="Aula07-Switching"
+        component={Switching}
+        durationInFrames={1800}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Aula08-Segmentacao"
+        component={Segmentation}
+        durationInFrames={1800}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Aula09-Subnetting"
+        component={Subnetting}
+        durationInFrames={1800}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Aula10-Vlsm"
+        component={Vlsm}
+        durationInFrames={1800}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Aula11-Routing"
+        component={Routing}
+        durationInFrames={1800}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Aula12-Diagnostico"
+        component={Diagnosis}
+        durationInFrames={1800}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Aula05-Ethernet"
+        component={Ethernet}
+        durationInFrames={1800}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Aula06-Acesso"
+        component={Access}
+        durationInFrames={1800}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
       <Composition
         id="Aula01-Historia"
         component={History}

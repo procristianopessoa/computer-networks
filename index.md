@@ -47,7 +47,7 @@ description: Trilha interativa de Redes de Computadores do IFSP, com teoria, vis
       <dl>
         <div><dt>Referência</dt><dd>CCNA I ou equivalente</dd></div>
         <div><dt>Formato</dt><dd>Web interativa</dd></div>
-        <div><dt>Verificação</dt><dd>10 questões por aula</dd></div>
+        <div><dt>Verificação</dt><dd>Quiz com feedback</dd></div>
       </dl>
     </aside>
   </div>
@@ -57,7 +57,7 @@ description: Trilha interativa de Redes de Computadores do IFSP, com teoria, vis
   <div class="wrap facts-grid">
     <div><strong>14</strong><span>aulas em sequência</span></div>
     <div><strong>5</strong><span>momentos de aprendizagem</span></div>
-    <div><strong>10</strong><span>questões em cada aula</span></div>
+    <div><strong>10–15</strong><span>questões por avaliação</span></div>
     <div><strong>∞</strong><span>possibilidades de exploração</span></div>
   </div>
 </section>

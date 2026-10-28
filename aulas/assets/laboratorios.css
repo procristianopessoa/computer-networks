@@ -1,0 +1,20 @@
+.lesson-cover { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px 35px 30px; text-align:center; }
+.lesson-cover > strong { color:var(--accent-light); font-size:130px; line-height:1; }
+.lesson-cover > p { color:#dae9e5; font-size:1.4rem; }
+.lesson-prose { max-width:1000px; }
+.lesson-prose .lead { margin-bottom:28px; }
+.lab-form { display:flex; flex-wrap:wrap; gap:18px; align-items:end; }
+.lab-form label { display:grid; gap:8px; font-weight:700; flex:1 1 220px; }
+.lab-form input,.lab-form select { width:100%; min-height:48px; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; background:var(--card); color:var(--ink); }
+.lab-help { flex:1 1 100%; color:var(--muted); }
+.lab-evidence { margin-top:26px; padding:22px; background:var(--pale); border-radius:14px; overflow-x:auto; }
+.lab-evidence h3 { margin-top:0; }
+.lab-evidence table { border-collapse:collapse; min-width:540px; width:100%; }
+.lab-evidence th,.lab-evidence td { padding:10px; border-bottom:1px solid var(--line); text-align:left; }
+.lab-evidence code { overflow-wrap:anywhere; }
+.lesson-task { margin-top:30px; padding:22px; border:1px solid var(--line); border-radius:14px; }
+.lesson-task summary { cursor:pointer; font-weight:700; }
+.lesson-summary li { margin:18px 0; font-size:1.15rem; }
+.lab-error { color:var(--red,#c9383e); font-weight:700; }
+.lab-evidence :focus-visible,.lab-form :focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+@media(max-width:600px) { .lesson-cover > strong {font-size:95px} .lab-form {display:grid} .lab-evidence {padding:14px} }

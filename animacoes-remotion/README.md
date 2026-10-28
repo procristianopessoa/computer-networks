@@ -1,26 +1,29 @@
 # Animações de Redes de Computadores
 
-Código-fonte das animações. Execute os comandos dentro desta pasta. Quatro composições em 1920 x 1080, 30 fps, sem áudio. Aula 01: 2min42s em nove cenas. Aulas 02–04: 28 segundos cada. Consulte HISTORIA-AULA01.md para o roteiro e as fontes.
+Full HD (1920 × 1080), 30 fps e sem narração. Aula 01: 2min42s; Aulas 02–04: 28s; Aulas 05–12: 1min cada.
 
-- Aula01-Historia: ARPANET, TCP/IP, proposta da Web e Web na Internet.
-- Aula02-Redes: hosts, switches e roteadores em duas LANs conectadas por uma WAN.
-- Aula03-Encapsulamento: dados, segmento TCP, pacote IP, quadro Ethernet e sinais.
-- Aula04-Sinais: exemplos esquemáticos de sinal elétrico, pulsos ópticos e modulação por fase.
-
-## Abrir novamente
+Execute nesta pasta:
 
 ```powershell
-cd animacoes-remotion
+npm.cmd ci
 npm.cmd run dev -- --no-open
 ```
 
-Abra o endereço informado no terminal. Nesta sessão: http://localhost:3001.
-
-## Verificação
+Para validar: `npm.cmd run lint`. Exemplo de exportação:
 
 ```powershell
-npm.cmd run lint
+npx.cmd remotion render Aula05-Ethernet out/aula05-ethernet.mp4 --codec=h264 --crf=23 --pixel-format=yuv420p --muted
 ```
 
-As animações são complementos visuais, sem narração. Os diagramas são didáticos e não estão em escala. A prévia não publica os vídeos no portal: exportação e integração ao site são etapas posteriores.
+## Composições do bloco 05–12
 
+- `Aula05-Ethernet` → `aula05-ethernet.mp4`
+- `Aula06-Acesso` → `aula06-acesso.mp4`
+- `Aula07-Switching` → `aula07-switching.mp4`
+- `Aula08-Segmentacao` → `aula08-segmentacao.mp4`
+- `Aula09-Subnetting` → `aula09-subnetting.mp4`
+- `Aula10-Vlsm` → `aula10-vlsm.mp4`
+- `Aula11-Routing` → `aula11-routing.mp4`
+- `Aula12-Diagnostico` → `aula12-diagnostico.mp4`
+
+Consulte `../VIDEOS.md` para publicação, capas e a alternativa de FFmpeg utilizada neste computador. O Studio é uma prévia local; só os MP4s e as capas entram nas páginas das aulas.
