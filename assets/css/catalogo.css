@@ -202,3 +202,8 @@ h2 { margin-bottom: 24px; font-size: clamp(39px, 5.4vw, 68px); letter-spacing: -
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+.animation-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 28px; padding: 20px; border: 1px solid var(--line, #ccdad5); border-radius: 16px; }
+.animation-links strong { margin-right: 8px; }
+.animation-links a { padding: 8px 13px; border: 1px solid currentColor; border-radius: 9px; color: inherit; text-decoration: none; }
+.animation-links a:hover, .animation-links a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }

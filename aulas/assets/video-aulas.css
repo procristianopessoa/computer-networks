@@ -1,0 +1,11 @@
+/* Players compartilhados das Aulas 01–04. */
+.lesson-video { margin: 34px 0; padding: clamp(18px, 3vw, 36px); border: 1px solid var(--line, #ccdad5); border-radius: 22px; background: var(--card, #fff); color: var(--ink, #152d38); }
+.lesson-video-heading > span { color: var(--accent, #188447); font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+.lesson-video-heading h2 { margin: 12px 0; font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1.2; }
+.lesson-video p { color: var(--muted, #58717c); }
+.lesson-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #071d2b; border-radius: 14px; }
+.lesson-video a { color: var(--accent, #188447); text-decoration: underline; text-underline-offset: .2em; }
+.animation-outline summary { cursor: pointer; font-weight: 700; padding: 12px 0; }
+.animation-outline li { margin: .65em 0; }
+.lesson-video :focus-visible { outline: 3px solid var(--accent, #188447); outline-offset: 4px; }
+@media print { .lesson-video video { display: none; } }

@@ -33,7 +33,7 @@ description: Trilha interativa de Redes de Computadores do IFSP, com teoria, vis
       </div>
       <nav class="ready-lessons" aria-label="Aulas prontas para estudar">
         <span>Aulas prontas</span>
-        {% for aula in aulas_disponiveis limit:4 %}
+        {% for aula in aulas_disponiveis %}
           <a href="{{ aula.url | relative_url }}"><b>{{ aula.numero }}</b><span>{{ aula.titulo }}</span><i aria-hidden="true">↗</i></a>
         {% endfor %}
       </nav>
@@ -105,13 +105,21 @@ description: Trilha interativa de Redes de Computadores do IFSP, com teoria, vis
         <button type="button" data-filter="pending" aria-pressed="false">Em preparação</button>
       </div>
     </div>
+    <nav class="animation-links" aria-label="Animações das aulas">
+      <strong>Revisar com animações</strong>
+      {% for aula in aulas_disponiveis %}
+        {% if aula.animacao %}
+          <a href="{{ aula.url | relative_url }}#animacao">Aula {{ aula.numero }} · {{ aula.duracao_animacao }}</a>
+        {% endif %}
+      {% endfor %}
+    </nav>
     <div class="cards" id="course-cards">
     {% for aula in site.data.aulas %}
       {% if aula.url != "" %}
         <a class="card available" data-status="available" href="{{ aula.url | relative_url }}">
           <div class="card-top"><b>{{ aula.numero }}</b><span class="state"><i></i>{{ aula.status }}</span></div>
           <div><h3>{{ aula.titulo }}</h3><p>{{ aula.tema }}</p></div>
-          <span class="open">Abrir aula <span aria-hidden="true">→</span></span>
+          <span class="open">{% if aula.animacao %}Abrir aula com animação{% else %}Abrir aula{% endif %} <span aria-hidden="true">→</span></span>
         </a>
       {% else %}
         <article class="card pending" data-status="pending">

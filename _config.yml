@@ -7,3 +7,6 @@ permalink: pretty
 exclude:
   - Gemfile
   - Gemfile.lock
+  - animacoes-remotion
+  - moodle
+  - VIDEOS.md

@@ -6,6 +6,7 @@
   <meta name="description" content="Aula interativa sobre componentes, topologias e tipos de redes de computadores.">
   <title>Aula 02 · Componentes, topologias e tipos de rede</title>
   <link rel="stylesheet" href="../assets/fundamentos.css">
+  <link rel="stylesheet" href="../assets/video-aulas.css">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -58,7 +59,7 @@
       <div class="wrap lesson-nav-inner">
         <span class="nav-label">Nesta aula</span>
         <div class="nav-links">
-          <a href="#objetivos">Objetivos</a><a href="#comunicacao">Comunicação</a><a href="#componentes">Componentes</a><a href="#topologias">Topologias</a><a href="#tipos">Tipos</a><a href="#qualidade">Qualidade</a><a href="#laboratorio">Laboratório</a><a href="#quiz">Quiz</a>
+          <a href="#objetivos">Objetivos</a><a href="#comunicacao">Comunicação</a><a href="#componentes">Componentes</a><a href="#topologias">Topologias</a><a href="#tipos">Tipos</a><a href="#qualidade">Qualidade</a><a href="#laboratorio">Laboratório</a><a href="#animacao">Animação</a><a href="#quiz">Quiz</a>
         </div>
       </div>
     </nav>
@@ -169,9 +170,16 @@
             <article><small>Decisão crítica</small><strong id="scenarioDecision">Cobertura e segurança Wi-Fi</strong></article>
           </div>
         </div>
-        <div class="remotion-slot">
-          <div><small>ANIMAÇÃO REMOTION · AULA 02</small><h3>Da LAN local à conexão entre filiais</h3><p>Composição planejada em 1920×1080: hosts aparecem, formam uma estrela e duas LANs são conectadas por roteadores através de uma WAN.</p></div><span class="remotion-badge">complementar</span>
-        </div>
+        <section class="lesson-video" id="animacao" aria-labelledby="animationTitle">
+      <div class="lesson-video-heading"><span>ANIMAÇÃO COMPLEMENTAR · AULA 02</span><h2 id="animationTitle">Duas LANs, uma comunicação</h2><p>28s · Sem narração · Use os controles para assistir, pausar ou ampliar.</p></div>
+      <video controls playsinline preload="metadata" width="1920" height="1080" poster="assets/aula02-redes-poster.jpg" aria-label="Animação da Aula 02: Duas LANs, uma comunicação" aria-describedby="animationDescription">
+        <source src="assets/aula02-redes.mp4" type="video/mp4">
+        Seu navegador não exibe vídeos HTML5. <a href="assets/aula02-redes.mp4">Abrir o vídeo MP4</a>.
+      </video>
+      <p id="animationDescription">Síntese visual com textos em português. O material escrito e as atividades da aula continuam disponíveis nesta página.</p>
+      <p><a href="assets/aula02-redes.mp4" download>Baixar animação em MP4</a></p>
+      <details class="animation-outline"><summary>Descrição textual e roteiro da animação</summary><ol><li>Hosts se conectam a switches em redes locais.</li><li>Roteadores interligam duas LANs através de uma WAN.</li><li>O movimento dos dados mostra o percurso da origem ao destino.</li></ol></details>
+    </section>
       </div>
     </section>
 
@@ -199,7 +207,7 @@
     </section>
 
     <section class="section references" id="referencias">
-      <div class="wrap"><span class="section-kicker">FONTES E APROFUNDAMENTO</span><h2>Referências da aula</h2><div class="reference-grid"><a href="https://www.cisco.com/site/us/en/learn/topics/networking/what-is-computer-networking.html" target="_blank" rel="noopener"><strong>Cisco</strong><span>What is Computer Networking?</span></a><a href="https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-lan-local-area-network.html" target="_blank" rel="noopener"><strong>Cisco</strong><span>What is a LAN?</span></a><a href="https://www.rfc-editor.org/rfc/rfc1122" target="_blank" rel="noopener"><strong>RFC 1122</strong><span>Requirements for Internet Hosts</span></a><a href="https://www.ieee802.org/" target="_blank" rel="noopener"><strong>IEEE 802</strong><span>LAN/MAN Standards Committee</span></a></div><details class="video-optional"><summary>Videoaula complementar <span>opcional</span></summary><p>O material principal está completo nesta página. A animação Remotion poderá ser usada como síntese visual, sem se tornar pré-requisito para o quiz.</p></details></div>
+      <div class="wrap"><span class="section-kicker">FONTES E APROFUNDAMENTO</span><h2>Referências da aula</h2><div class="reference-grid"><a href="https://www.cisco.com/site/us/en/learn/topics/networking/what-is-computer-networking.html" target="_blank" rel="noopener"><strong>Cisco</strong><span>What is Computer Networking?</span></a><a href="https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-lan-local-area-network.html" target="_blank" rel="noopener"><strong>Cisco</strong><span>What is a LAN?</span></a><a href="https://www.rfc-editor.org/rfc/rfc1122" target="_blank" rel="noopener"><strong>RFC 1122</strong><span>Requirements for Internet Hosts</span></a><a href="https://www.ieee802.org/" target="_blank" rel="noopener"><strong>IEEE 802</strong><span>LAN/MAN Standards Committee</span></a></div><p class="animation-reference"><a href="#animacao">Assistir à animação complementar desta aula</a></p></div>
     </section>
   </main>
 
