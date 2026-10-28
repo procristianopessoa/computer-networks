@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aula interativa sobre componentes, topologias e tipos de redes de computadores.">
+  <title>Aula 02 · Componentes, topologias e tipos de rede</title>
+  <link rel="stylesheet" href="../assets/fundamentos.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <a class="brand" href="../../" aria-label="Voltar ao portal do curso">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>Redes de Computadores</strong><small>IFSP · Curso interativo</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-button" id="printLesson" type="button" aria-label="Imprimir aula">⎙</button>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Ativar tema escuro">◐</button>
+    </div>
+  </header>
+  <div class="progress-shell" aria-hidden="true">
+    <div class="progress-track"><span id="globalProgress"></span></div>
+    <span id="progressLabel">0% concluído</span>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-grid wrap">
+        <div class="hero-copy">
+          <span class="eyebrow">AULA 02 · FUNDAMENTOS DE REDE</span>
+          <h1>Como uma rede<br><em>ganha forma</em></h1>
+          <p>Dispositivos, meios e regras transformam computadores isolados em uma infraestrutura capaz de entregar serviços.</p>
+          <div class="hero-meta" aria-label="Informações da aula">
+            <span>⏱ 45–60 min</span><span>◎ 10 questões</span><span>◈ laboratório de topologias</span>
+          </div>
+          <div class="button-row">
+            <a class="primary-button" href="#objetivos">Iniciar aula <span aria-hidden="true">↓</span></a>
+            <a class="secondary-button" href="../aula01-historia-internet/">← Rever Aula 01</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Representação de uma rede com dispositivos finais e intermediários">
+          <span class="visual-label">Uma rede é um sistema, não um único equipamento</span>
+          <i class="link-line" style="left:24%;top:52%;width:33%;rotate:-18deg"></i>
+          <i class="link-line" style="left:24%;top:52%;width:34%;rotate:22deg"></i>
+          <i class="link-line" style="left:56%;top:42%;width:29%;rotate:-34deg"></i>
+          <i class="link-line" style="left:56%;top:42%;width:30%;rotate:38deg"></i>
+          <span class="pulse-node" data-label="Notebook" style="left:10%;top:43%">▰</span>
+          <span class="pulse-node main" data-label="Switch" style="left:47%;top:32%">⇄</span>
+          <span class="pulse-node" data-label="Servidor" style="right:8%;top:12%">▥</span>
+          <span class="pulse-node" data-label="Impressora" style="right:7%;bottom:16%">▤</span>
+          <span class="moving-bit" style="left:41%;top:45%"></span>
+        </div>
+      </div>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Sumário da aula">
+      <div class="wrap lesson-nav-inner">
+        <span class="nav-label">Nesta aula</span>
+        <div class="nav-links">
+          <a href="#objetivos">Objetivos</a><a href="#comunicacao">Comunicação</a><a href="#componentes">Componentes</a><a href="#topologias">Topologias</a><a href="#tipos">Tipos</a><a href="#qualidade">Qualidade</a><a href="#laboratorio">Laboratório</a><a href="#quiz">Quiz</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section" id="objetivos">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><span class="section-kicker">O QUE VOCÊ VAI DOMINAR</span><h2>Ver a rede como um conjunto de funções</h2></div><span class="chapter-number">02</span>
+        </div>
+        <div class="objective-grid">
+          <article class="objective-card"><b>1</b><strong>Reconhecer componentes</strong><p>Distinguir dispositivos finais, intermediários e meios de transmissão.</p></article>
+          <article class="objective-card"><b>2</b><strong>Ler topologias</strong><p>Separar o desenho físico do caminho lógico percorrido pelos dados.</p></article>
+          <article class="objective-card"><b>3</b><strong>Classificar redes</strong><p>Relacionar LAN, WLAN, MAN e WAN ao alcance e à administração.</p></article>
+          <article class="objective-card"><b>4</b><strong>Avaliar projetos</strong><p>Usar disponibilidade, escalabilidade, QoS e segurança como critérios.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="comunicacao">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">1 · O ATO DE COMUNICAR</span><h2>Cinco elementos precisam trabalhar juntos</h2><p>Uma transmissão só tem valor quando a mensagem chega ao destino, pode ser interpretada e atende ao tempo exigido pela aplicação.</p></div><span class="chapter-number">01</span></div>
+        <div class="concept-flow" aria-label="Elementos de uma comunicação de rede">
+          <article><b>Emissor</b><span>origina os dados</span></article><i>→</i>
+          <article><b>Mensagem</b><span>informação enviada</span></article><i>→</i>
+          <article><b>Meio</b><span>transporta sinais</span></article><i>→</i>
+          <article><b>Receptor</b><span>recebe os dados</span></article><i>↔</i>
+          <article><b>Protocolo</b><span>define as regras</span></article>
+        </div>
+        <div class="note" style="margin-top:24px"><strong>Ideia-chave:</strong> possuir um cabo entre dois equipamentos não garante comunicação. Formato, endereçamento, sincronização e resposta precisam obedecer a regras compatíveis.</div>
+      </div>
+    </section>
+
+    <section class="section" id="componentes">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">2 · QUEM FAZ A REDE FUNCIONAR</span><h2>Origem, caminho e suporte físico</h2></div><span class="chapter-number">02</span></div>
+        <div class="card-grid">
+          <article class="info-card"><span class="icon">▰</span><strong>Dispositivos finais</strong><p>Notebooks, telefones, servidores, sensores e impressoras originam ou recebem mensagens. Também são chamados hosts.</p></article>
+          <article class="info-card"><span class="icon">⇄</span><strong>Switches</strong><p>Conectam dispositivos dentro da rede local e encaminham quadros usando informações da camada de enlace.</p></article>
+          <article class="info-card"><span class="icon">◇</span><strong>Roteadores</strong><p>Interligam redes distintas e escolhem caminhos para pacotes com base no endereçamento lógico.</p></article>
+          <article class="info-card"><span class="icon">)))</span><strong>Pontos de acesso</strong><p>Oferecem acesso sem fio e integram estações Wi-Fi à infraestrutura da rede local.</p></article>
+        </div>
+        <div class="split" style="margin-top:46px">
+          <div><span class="section-kicker">MEIOS DE REDE</span><h3>O dado não viaja no vazio</h3><p class="lead">Bits são representados por sinais elétricos no cobre, pulsos de luz na fibra ou ondas eletromagnéticas no espaço. A escolha do meio afeta distância, capacidade, interferência, mobilidade e custo.</p></div>
+          <div class="feature-list">
+            <article><strong>Hardware</strong><p>Interfaces de rede, conectores, cabos, antenas e equipamentos intermediários.</p></article>
+            <article><strong>Software</strong><p>Sistemas operacionais, drivers, serviços e protocolos que controlam a comunicação.</p></article>
+            <article><strong>Serviços</strong><p>DNS, Web, autenticação, arquivos, voz e aplicações entregam valor sobre a infraestrutura.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="topologias">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">3 · COMO OS NÓS SE ORGANIZAM</span><h2>Topologia física não é topologia lógica</h2><p>A física descreve conexões e posições. A lógica descreve como os dados circulam e quem compartilha cada domínio.</p></div><span class="chapter-number">03</span></div>
+        <div class="topology-grid">
+          <article class="topology-card"><div class="mini-topology"><i style="left:15%;top:74px;width:70%"></i><span style="left:10%;top:58px">A</span><span style="left:43%;top:58px">B</span><span style="right:10%;top:58px">C</span></div><h3>Barramento</h3><p>Vários nós compartilham um mesmo caminho. Foi importante historicamente, mas uma falha no meio comum pode afetar todos.</p></article>
+          <article class="topology-card"><div class="mini-topology"><i style="left:50%;top:74px;width:40%;rotate:-45deg"></i><i style="left:50%;top:74px;width:40%;rotate:45deg"></i><i style="left:16%;top:74px;width:34%"></i><span style="left:43%;top:57px">SW</span><span style="left:8%;top:57px">A</span><span style="right:8%;top:18px">B</span><span style="right:8%;bottom:18px">C</span></div><h3>Estrela</h3><p>Cada nó possui um enlace até o equipamento central. É a forma física dominante nas LANs Ethernet atuais.</p></article>
+          <article class="topology-card"><div class="mini-topology"><i style="left:23%;top:35px;width:55%"></i><i style="left:23%;top:35px;width:62%;rotate:58deg"></i><i style="left:78%;top:35px;width:62%;rotate:122deg"></i><span style="left:15%;top:18px">A</span><span style="right:15%;top:18px">B</span><span style="left:43%;bottom:18px">C</span></div><h3>Malha</h3><p>Múltiplos caminhos aumentam a resiliência, mas também elevam o custo e a complexidade de projeto e operação.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tipos">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">4 · ESCOPO E ADMINISTRAÇÃO</span><h2>O tamanho geográfico é apenas uma pista</h2><p>Também importam quem administra a rede, como os enlaces são contratados e quais tecnologias oferecem o acesso.</p></div><span class="chapter-number">04</span></div>
+        <div class="scale-strip">
+          <article><small>LOCAL</small><h3>LAN</h3><p>Rede de uma residência, laboratório, escritório ou campus, normalmente sob uma mesma administração.</p></article>
+          <article><small>LOCAL SEM FIO</small><h3>WLAN</h3><p>Extensão da LAN na qual estações acessam a rede por rádio através de pontos de acesso.</p></article>
+          <article><small>METROPOLITANA</small><h3>MAN</h3><p>Interliga locais dentro de uma região urbana, muitas vezes usando infraestrutura de uma operadora.</p></article>
+          <article><small>LONGA DISTÂNCIA</small><h3>WAN</h3><p>Conecta redes geograficamente separadas por enlaces fornecidos ou operados em grande escala.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="qualidade">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">5 · UMA REDE PRONTA PARA CRESCER</span><h2>Conectividade é o começo, não o objetivo final</h2><p>Um projeto profissional precisa continuar útil diante de falhas, crescimento, aplicações sensíveis e ameaças.</p></div><span class="chapter-number">05</span></div>
+        <div class="card-grid">
+          <article class="info-card"><span class="icon">↻</span><strong>Tolerância a falhas</strong><p>Redundância e caminhos alternativos reduzem o impacto de uma única falha.</p></article>
+          <article class="info-card"><span class="icon">↗</span><strong>Escalabilidade</strong><p>A rede cresce sem exigir reconstrução completa nem perder desempenho de forma imprevisível.</p></article>
+          <article class="info-card"><span class="icon">≋</span><strong>Qualidade de serviço</strong><p>Tráfego sensível a atraso, como voz e vídeo, recebe tratamento coerente com sua necessidade.</p></article>
+          <article class="info-card"><span class="icon">⌾</span><strong>Segurança</strong><p>Confidencialidade, integridade e disponibilidade orientam controles técnicos e operacionais.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="laboratorio">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">6 · EXPERIÊNCIA INTERATIVA</span><h2>Projete a rede a partir do contexto</h2><p>Troque o cenário e observe como alcance, dispositivos e prioridade de projeto mudam.</p></div><span class="chapter-number">06</span></div>
+        <div class="lab">
+          <div class="lab-header"><div><span class="section-kicker">LABORATÓRIO DE TOPOLOGIA</span><h3>Da residência às filiais</h3></div><p>Não existe uma topologia universalmente “melhor”. Existe uma solução coerente com requisitos, riscos e orçamento.</p></div>
+          <div class="lab-tabs" aria-label="Selecionar cenário">
+            <button class="lab-tab active" type="button" data-scenario="casa">Residência</button>
+            <button class="lab-tab" type="button" data-scenario="campus">Campus</button>
+            <button class="lab-tab" type="button" data-scenario="filiais">Filiais</button>
+          </div>
+          <div class="lab-stage" id="networkScenario" aria-live="polite">
+            <span class="pulse-node main" id="scenarioCenter" data-label="Roteador Wi-Fi" style="left:44%;top:38%">⌂</span>
+            <span class="pulse-node scenario-edge" data-label="Notebook" style="left:10%;top:18%">▰</span>
+            <span class="pulse-node scenario-edge" data-label="TV" style="right:10%;top:18%">▣</span>
+            <span class="pulse-node scenario-edge" data-label="Celular" style="left:10%;bottom:18%">▯</span>
+            <span class="pulse-node scenario-edge" data-label="IoT" style="right:10%;bottom:18%">●</span>
+          </div>
+          <div class="lab-output">
+            <article><small>Escopo</small><strong id="scenarioScope">LAN/WLAN doméstica</strong></article>
+            <article><small>Elemento central</small><strong id="scenarioDevice">Roteador com AP integrado</strong></article>
+            <article><small>Decisão crítica</small><strong id="scenarioDecision">Cobertura e segurança Wi-Fi</strong></article>
+          </div>
+        </div>
+        <div class="remotion-slot">
+          <div><small>ANIMAÇÃO REMOTION · AULA 02</small><h3>Da LAN local à conexão entre filiais</h3><p>Composição planejada em 1920×1080: hosts aparecem, formam uma estrela e duas LANs são conectadas por roteadores através de uma WAN.</p></div><span class="remotion-badge">complementar</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="flashcards">
+      <div class="wrap narrow">
+        <div class="section-heading"><div><span class="section-kicker">REVISÃO ATIVA</span><h2>Flashcards essenciais</h2><p>Clique no cartão para virar. Use as setas para avançar.</p></div><span class="chapter-number">12</span></div>
+        <div class="flashcard-shell">
+          <button class="flashcard" id="flashcard" type="button" aria-label="Virar flashcard"><span class="flash-face flash-front"><small>CONCEITO</small><strong id="flashTerm"></strong><em>Clique para virar</em></span><span class="flash-face flash-back"><small>EXPLICAÇÃO</small><strong id="flashDefinition"></strong><em>Clique para voltar</em></span></button>
+          <div class="flash-controls"><button id="flashPrev" type="button" aria-label="Flashcard anterior">←</button><div class="flash-dots" id="flashDots" aria-hidden="true"></div><span id="flashCounter">1/12</span><button id="flashNext" type="button" aria-label="Próximo flashcard">→</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <div class="wrap quiz-wrap">
+        <div class="section-heading"><div><span class="section-kicker">VERIFIQUE A APRENDIZAGEM</span><h2>Quiz final · 10 questões</h2></div><span class="chapter-number" id="quizScore">0/10</span></div>
+        <div class="quiz-intro" id="quizIntro"><div><strong>Como funciona</strong><p>As alternativas são embaralhadas. Depois de responder, você recebe a explicação. A meta é 7 acertos.</p></div><button class="primary-button" id="startQuiz" type="button">Começar quiz</button></div>
+        <div class="quiz-card" id="quizCard" hidden><div class="quiz-progress"><span id="questionNumber"></span><div><i id="quizProgressBar"></i></div></div><span class="question-type" id="questionType"></span><h3 id="questionText"></h3><div class="answers" id="answers"></div><div class="answer-feedback" id="answerFeedback" hidden></div><button class="primary-button next-question" id="nextQuestion" type="button" hidden>Próxima questão →</button></div>
+        <div class="quiz-result" id="quizResult" hidden><div class="result-ring"><strong id="resultScore">0</strong><span id="resultTotal">/10</span></div><div><span class="section-kicker" id="resultStatus"></span><h3>Resultado da Aula 02</h3><p id="resultMessage"></p><div class="result-actions"><button class="primary-button" id="retryQuiz" type="button">Refazer quiz</button><button class="secondary-button" id="reviewErrors" type="button">Revisar erros</button></div></div></div>
+      </div>
+    </section>
+
+    <section class="section synthesis" id="sintese">
+      <div class="wrap narrow"><span class="section-kicker">SÍNTESE</span><h2>Uma rede resulta da coordenação entre pessoas, dispositivos, meios e regras.</h2><div class="synthesis-list"><div><span>Hosts</span><i>→</i><strong>originam e consomem dados</strong></div><div><span>Dispositivos intermediários</span><i>→</i><strong>encaminham, conectam e controlam</strong></div><div><span>Topologia</span><i>→</i><strong>organiza conexões físicas e fluxos lógicos</strong></div><div><span>Requisitos</span><i>→</i><strong>orientam disponibilidade, escala, QoS e segurança</strong></div></div><blockquote>Antes de escolher equipamentos, descreva quem precisa se comunicar, com qual serviço, por qual alcance e sob quais riscos.</blockquote></div>
+    </section>
+
+    <section class="section references" id="referencias">
+      <div class="wrap"><span class="section-kicker">FONTES E APROFUNDAMENTO</span><h2>Referências da aula</h2><div class="reference-grid"><a href="https://www.cisco.com/site/us/en/learn/topics/networking/what-is-computer-networking.html" target="_blank" rel="noopener"><strong>Cisco</strong><span>What is Computer Networking?</span></a><a href="https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-lan-local-area-network.html" target="_blank" rel="noopener"><strong>Cisco</strong><span>What is a LAN?</span></a><a href="https://www.rfc-editor.org/rfc/rfc1122" target="_blank" rel="noopener"><strong>RFC 1122</strong><span>Requirements for Internet Hosts</span></a><a href="https://www.ieee802.org/" target="_blank" rel="noopener"><strong>IEEE 802</strong><span>LAN/MAN Standards Committee</span></a></div><details class="video-optional"><summary>Videoaula complementar <span>opcional</span></summary><p>O material principal está completo nesta página. A animação Remotion poderá ser usada como síntese visual, sem se tornar pré-requisito para o quiz.</p></details></div>
+    </section>
+  </main>
+
+  <section class="lesson-end"><div class="wrap lesson-end-inner"><div><span>PRÓXIMA AULA</span><h2>Protocolos e modelos de referência</h2></div><a class="primary-button" href="../aula03-protocolos-modelos/">Ir para a Aula 03 →</a></div></section>
+  <footer><div class="wrap"><span>IFSP · Redes de Computadores</span><span>Aula 02 · Material web principal</span></div></footer>
+  <script defer src="lesson.js"></script>
+  <script defer src="../assets/fundamentos.js"></script>
+</body>
+</html>

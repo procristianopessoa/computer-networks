@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aula interativa sobre a evolução das redes de computadores: ARPA, ARPANET, ALOHAnet, Ethernet, TCP/IP, RFCs, OSI, Internet e Web.">
+  <title>Aula 01 — Da ARPANET à Web | Redes de Computadores</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="topbar">
+    <a class="brand" href="../../" aria-label="Voltar ao portal do curso" title="Voltar ao portal do curso">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>Redes de Computadores</strong><small>IFSP • Curso interativo</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-button" id="printButton" type="button" title="Imprimir ou salvar em PDF" aria-label="Imprimir ou salvar em PDF">⎙</button>
+      <button class="icon-button" id="themeButton" type="button" title="Alternar tema" aria-label="Alternar entre tema claro e escuro">◐</button>
+    </div>
+  </header>
+
+  <div class="progress-shell" aria-label="Progresso na aula">
+    <div class="progress-track"><span id="globalProgress"></span></div>
+    <span id="progressLabel">0% concluído</span>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" data-track>
+      <img src="assets/network-evolution-hero-v2.png" alt="Evolução visual de computadores isolados para uma rede global">
+      <div class="hero-overlay"></div>
+      <div class="hero-content wrap">
+        <span class="eyebrow">AULA 01 • FUNDAMENTOS E HISTÓRIA</span>
+        <h1>Da ARPANET à<br><em>World Wide Web</em></h1>
+        <p>Como problemas técnicos, protocolos abertos e padronização construíram a Internet.</p>
+        <div class="learning-path" aria-label="Metodologia e ementa do curso">
+          <div>
+            <small>Como você vai aprender</small>
+            <strong>Entender primeiro. <em>Configurar depois.</em></strong>
+          </div>
+          <a href="assets/ementa-redes-computadores-grurcom.pdf" target="_blank" rel="noopener">
+            Consultar ementa <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="hero-meta" aria-label="Informações da aula">
+          <span>⏱ 50–70 min</span>
+          <span>◎ 10 questões</span>
+          <span>◈ 3 experiências interativas</span>
+        </div>
+        <a class="primary-button" href="#pergunta-guia">Iniciar aula <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Sumário da aula">
+      <div class="wrap lesson-nav-inner">
+        <span class="nav-label">Nesta aula</span>
+        <div class="nav-links">
+          <a href="#origem">Origem</a>
+          <a href="#pacotes">Pacotes</a>
+          <a href="#arpanet">ARPANET</a>
+          <a href="#aloha">ALOHA e Ethernet</a>
+          <a href="#tcpip">TCP/IP</a>
+          <a href="#padroes">Padrões</a>
+          <a href="#web">Internet × Web</a>
+          <a href="#quiz">Quiz</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section pale-section" id="pergunta-guia" data-track>
+      <div class="wrap narrow">
+        <span class="section-kicker">ANTES DE COMEÇAR</span>
+        <h2>A Internet nasceu como uma única invenção?</h2>
+        <p class="lead">Escolha a hipótese que parece mais plausível. Não vale nota: ela serve para registrar sua concepção inicial.</p>
+        <div class="hypothesis-grid" id="hypothesisGrid">
+          <button class="choice-card" type="button" data-hypothesis="military">
+            <span class="choice-letter">A</span>
+            <strong>Foi criada como uma rede militar pronta para resistir a uma guerra nuclear.</strong>
+          </button>
+          <button class="choice-card" type="button" data-hypothesis="web">
+            <span class="choice-letter">B</span>
+            <strong>Nasceu quando a Web e o primeiro navegador foram inventados.</strong>
+          </button>
+          <button class="choice-card" type="button" data-hypothesis="collective">
+            <span class="choice-letter">C</span>
+            <strong>Resultou de soluções sucessivas para compartilhar recursos e interligar redes diferentes.</strong>
+          </button>
+        </div>
+        <div class="feedback-panel" id="hypothesisFeedback" role="status" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section class="section" id="objetivos" data-track>
+      <div class="wrap">
+        <div class="section-heading">
+          <div><span class="section-kicker">MAPA DA APRENDIZAGEM</span><h2>O que você será capaz de explicar</h2></div>
+          <span class="chapter-number">01</span>
+        </div>
+        <div class="objective-grid">
+          <article class="objective-card"><span>01</span><h3>Origem</h3><p>Relacionar Guerra Fria, Sputnik, ARPA e a necessidade de compartilhar recursos computacionais.</p></article>
+          <article class="objective-card"><span>02</span><h3>Tecnologia</h3><p>Distinguir circuitos de pacotes e explicar as contribuições de ARPANET, ALOHAnet e Ethernet.</p></article>
+          <article class="objective-card"><span>03</span><h3>Padronização</h3><p>Posicionar TCP/IP, RFCs, IEEE 802 e OSI sem tratá-los como concorrentes equivalentes.</p></article>
+          <article class="objective-card"><span>04</span><h3>Serviços</h3><p>Diferenciar a infraestrutura Internet do serviço World Wide Web.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="origem" data-track>
+      <div class="wrap">
+        <div class="section-heading light-heading">
+          <div><span class="section-kicker">1 • O PROBLEMA INICIAL</span><h2>Quando cada computador era uma ilha</h2></div>
+          <span class="chapter-number">1950–60</span>
+        </div>
+        <div class="story-grid">
+          <div>
+            <p class="lead">Os primeiros computadores eram grandes, caros e isolados. Compartilhar processamento significava transportar cartões perfurados, fitas e pessoas.</p>
+            <p>Para pesquisadores, o problema econômico era direto: diferentes instituições possuíam recursos valiosos, mas não havia um modo eficiente de usá-los à distância. A rede começou como resposta à escassez e à incompatibilidade — não como caminho para páginas Web, que ainda demorariam décadas para existir.</p>
+            <div class="concept-line">
+              <span>computadores isolados</span><i aria-hidden="true">→</i><span>compartilhamento remoto</span><i aria-hidden="true">→</i><strong>rede</strong>
+            </div>
+          </div>
+          <aside class="context-card">
+            <span class="context-year">1957</span>
+            <h3>Sputnik</h3>
+            <p>O satélite soviético transformou ciência e tecnologia em prioridade estratégica para os Estados Unidos.</p>
+            <hr>
+            <span class="context-year">1958</span>
+            <h3>Criação da ARPA</h3>
+            <p>A agência passou a financiar pesquisas avançadas para reduzir novas surpresas tecnológicas.</p>
+          </aside>
+        </div>
+        <div class="myth-box">
+          <div class="myth-side"><span>MITO SIMPLIFICADO</span><p>“A Internet foi criada apenas para sobreviver a um ataque nuclear.”</p></div>
+          <div class="myth-arrow" aria-hidden="true">≠</div>
+          <div class="fact-side"><span>LEITURA HISTÓRICA</span><p>Resiliência importava, mas compartilhar computadores, conectar pesquisadores e estudar comunicação distribuída também eram objetivos centrais.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pacotes" data-track>
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">2 • A MUDANÇA FUNDAMENTAL</span><h2>Dados precisavam de pacotes, não de circuitos</h2></div><span class="chapter-number">PACKET</span></div>
+        <div class="compare-grid">
+          <article class="compare-card circuit-card">
+            <span class="card-tag red">COMUTAÇÃO DE CIRCUITOS</span>
+            <div class="circuit-visual"><b>A</b><span></span><b>B</b></div>
+            <h3>Um caminho fica reservado</h3>
+            <p>A comunicação telefônica tradicional mantém um circuito dedicado durante toda a conversa. Funciona bem para fluxo contínuo de voz, mas desperdiça capacidade quando computadores ficam em silêncio.</p>
+          </article>
+          <article class="compare-card packet-card">
+            <span class="card-tag green">COMUTAÇÃO DE PACOTES</span>
+            <div class="packet-mini"><b>A</b><span>1</span><span>2</span><span>3</span><span>4</span><b>B</b></div>
+            <h3>O enlace é compartilhado</h3>
+            <p>A mensagem é dividida. Cada pacote recebe controle, origem e destino, pode disputar recursos com outros fluxos e é reconstruído ao chegar.</p>
+          </article>
+        </div>
+
+        <div class="lab-card packet-lab" id="packetLab">
+          <div class="lab-header">
+            <div><span class="section-kicker">EXPERIÊNCIA 1</span><h3>Veja quatro pacotes atravessarem a rede</h3></div>
+            <button class="secondary-button" id="sendPackets" type="button">Enviar mensagem</button>
+          </div>
+          <p>Os pacotes podem usar rotas diferentes. O destino os reorganiza pela numeração, não pela ordem de chegada.</p>
+          <div class="network-stage" aria-label="Simulação de pacotes entre origem e destino">
+            <div class="endpoint source"><span>ORIGEM</span><strong>A</strong></div>
+            <div class="router r1">R1</div><div class="router r2">R2</div><div class="router r3">R3</div><div class="router r4">R4</div>
+            <svg class="network-lines" viewBox="0 0 1000 320" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M90 160 L310 70 L540 80 L780 160 L920 160"/>
+              <path d="M90 160 L310 250 L540 240 L780 160 L920 160"/>
+              <path d="M310 70 L540 240 M310 250 L540 80"/>
+            </svg>
+            <div class="packet p1" aria-hidden="true">1</div><div class="packet p2" aria-hidden="true">2</div><div class="packet p3" aria-hidden="true">3</div><div class="packet p4" aria-hidden="true">4</div>
+            <div class="endpoint destination"><span>DESTINO</span><strong>B</strong></div>
+          </div>
+          <div class="assembly" aria-live="polite"><span id="packetStatus">Clique em “Enviar mensagem”.</span><div id="packetAssembly"><i>—</i><i>—</i><i>—</i><i>—</i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pale-section" id="arpanet" data-track>
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">3 • A PRIMEIRA PROVA</span><h2>Quatro nós e uma mensagem de duas letras</h2></div><span class="chapter-number">1969</span></div>
+        <div class="arpanet-grid">
+          <div class="arpanet-map" aria-label="Quatro nós iniciais da ARPANET">
+            <svg viewBox="0 0 700 430" role="img" aria-labelledby="arpanetMapTitle">
+              <title id="arpanetMapTitle">UCLA, SRI, UCSB e Universidade de Utah conectados por IMPs</title>
+              <path d="M130 120 L330 300 L500 110 L610 305"/>
+              <path d="M130 120 L500 110 M330 300 L610 305" class="faint"/>
+              <g transform="translate(75 65)"><circle cx="55" cy="55" r="55"/><text x="55" y="62">UCLA</text></g>
+              <g transform="translate(275 245)"><circle cx="55" cy="55" r="55"/><text x="55" y="62">SRI</text></g>
+              <g transform="translate(445 55)"><circle cx="55" cy="55" r="55"/><text x="55" y="62">UCSB</text></g>
+              <g transform="translate(555 250)"><circle cx="55" cy="55" r="55"/><text x="55" y="62">UTAH</text></g>
+            </svg>
+            <p>Os <strong>IMPs</strong> encaminhavam mensagens, cumprindo uma função comparável à dos roteadores atuais.</p>
+          </div>
+          <article class="lo-story">
+            <span class="story-date">29 OUT 1969</span>
+            <p class="attempt">LOGIN</p>
+            <p class="received">LO</p>
+            <h3>O sistema caiu antes de transmitir “GIN”.</h3>
+            <p>A pequena falha não diminui o marco: UCLA e Stanford Research Institute realizaram a primeira comunicação host a host da ARPANET.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="aloha" data-track>
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">4 • O MEIO COMPARTILHADO</span><h2>Do rádio entre ilhas ao Ethernet</h2></div><span class="chapter-number">1971–73</span></div>
+        <div class="story-grid reverse">
+          <div>
+            <p class="lead">No Havaí, várias estações precisavam compartilhar o mesmo canal de rádio. Surge uma pergunta decisiva: o que fazer quando duas transmitem ao mesmo tempo?</p>
+            <ol class="process-list">
+              <li><span>1</span><div><strong>Transmitir</strong><p>A estação envia quando possui dados.</p></div></li>
+              <li><span>2</span><div><strong>Confirmar</strong><p>Sem confirmação, presume que o quadro foi perdido.</p></div></li>
+              <li><span>3</span><div><strong>Esperar</strong><p>Um intervalo aleatório evita que ambas repitam juntas.</p></div></li>
+              <li><span>4</span><div><strong>Retransmitir</strong><p>A estação realiza nova tentativa.</p></div></li>
+            </ol>
+          </div>
+          <div class="aloha-simulator">
+            <span class="section-kicker">EXPERIÊNCIA 2</span>
+            <h3>Simulador de colisão</h3>
+            <p>Transmita A e B rapidamente para provocar uma colisão.</p>
+            <div class="aloha-channel">
+              <div class="station station-a">A</div><div class="radio-tower">⌁<small>CANAL</small></div><div class="station station-b">B</div>
+              <div class="signal signal-a"></div><div class="signal signal-b"></div>
+            </div>
+            <div class="sim-actions"><button type="button" data-station="a">Transmitir A</button><button type="button" data-station="b">Transmitir B</button></div>
+            <div class="sim-status" id="alohaStatus" role="status" aria-live="polite">Canal livre.</div>
+          </div>
+        </div>
+
+        <div class="evolution-strip" aria-label="Evolução do acesso ao meio">
+          <div><strong>ALOHAnet</strong><span>rádio + pacotes</span></div><i>→</i><div><strong>Ethernet</strong><span>LAN compartilhada</span></div><i>→</i><div><strong>Switch</strong><span>enlaces dedicados</span></div>
+        </div>
+        <div class="callout">
+          <strong>Conexão conceitual</strong>
+          <p>A ALOHAnet não foi uma etapa da ARPANET. Foi uma pesquisa paralela cujo acesso aleatório ao meio influenciou o Ethernet e outros sistemas. Em 1973, Bob Metcalfe e David Boggs desenvolveram no Xerox PARC uma LAN baseada em quadros.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="tcpip" data-track>
+      <div class="wrap">
+        <div class="section-heading light-heading"><div><span class="section-kicker">5 • UMA REDE DE REDES</span><h2>TCP/IP tornou a tecnologia física invisível para a aplicação</h2></div><span class="chapter-number">1983</span></div>
+        <p class="lead max-text">Construir redes isoladas já não bastava. O desafio passou a ser conectar Ethernet, rádio e outras tecnologias sem obrigá-las a funcionar da mesma forma.</p>
+        <div class="internetwork-diagram">
+          <div class="net-card green-net"><span>REDE 1</span><strong>Ethernet</strong></div>
+          <span class="flow-arrow">→</span>
+          <div class="router-card"><span>GATEWAY</span><strong>Roteador</strong></div>
+          <span class="flow-arrow">→</span>
+          <div class="net-card blue-net"><span>REDE 2</span><strong>Rádio</strong></div>
+        </div>
+        <div class="tcpip-grid">
+          <button class="protocol-card active" type="button" data-protocol="ip"><span>IP</span><strong>Entrega entre redes</strong><small>endereço • datagrama • rota • melhor esforço</small></button>
+          <button class="protocol-card" type="button" data-protocol="tcp"><span>TCP</span><strong>Conversa confiável</strong><small>sequência • perdas • retransmissão • fluxo</small></button>
+          <div class="protocol-explanation" id="protocolExplanation">
+            <strong>Internet Protocol</strong>
+            <p>O IP oferece uma linguagem comum acima das redes de acesso. Um roteador pode retirar o quadro Ethernet recebido, analisar o datagrama IP e colocá-lo em outro tipo de quadro para o próximo enlace.</p>
+          </div>
+        </div>
+        <div class="flag-day">
+          <span class="old-protocol">NCP</span><span class="flag-arrow">→</span><span class="new-protocol">TCP/IP</span>
+          <div><strong>1º de janeiro de 1983</strong><p>A ARPANET realizou sua transição obrigatória. Hosts que não migrassem perderiam conectividade — um marco da Internet moderna.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="padroes" data-track>
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">6 • PADRONIZAÇÃO ABERTA</span><h2>IEEE, IETF e ISO resolvem partes diferentes</h2></div><span class="chapter-number">OPEN</span></div>
+        <div class="standards-table" role="table" aria-label="Comparação entre IEEE, IETF e ISO">
+          <div class="standards-row standards-head" role="row"><span role="columnheader">Organização</span><span role="columnheader">Foco</span><span role="columnheader">Exemplos</span></div>
+          <button class="standards-row" type="button" role="row" data-standard="ieee"><strong role="cell">IEEE 802</strong><span role="cell">LANs e meios de acesso</span><span role="cell">802.3 Ethernet • 802.11 Wi‑Fi</span></button>
+          <button class="standards-row" type="button" role="row" data-standard="ietf"><strong role="cell">IETF / RFC</strong><span role="cell">Protocolos da Internet</span><span role="cell">IP • TCP • DNS • HTTP</span></button>
+          <button class="standards-row" type="button" role="row" data-standard="iso"><strong role="cell">ISO</strong><span role="cell">Modelos e normas</span><span role="cell">Modelo de referência OSI</span></button>
+        </div>
+        <div class="standard-detail" id="standardDetail" aria-live="polite">
+          <span class="detail-mark">802</span><div><strong>IEEE 802 é uma família, não um único padrão.</strong><p>O IEEE trabalha principalmente nas camadas Física e de Enlace. Ethernet transporta o datagrama IP dentro da rede local.</p></div>
+        </div>
+
+        <div class="rfc-panel">
+          <div><span class="section-kicker">REQUEST FOR COMMENTS</span><h3>Uma memória técnica pública e permanente</h3><p>A série começou com a RFC 1, em 1969. Uma RFC publicada não é reescrita: outro documento pode atualizá-la ou substituí-la. E atenção: <strong>nem toda RFC é um padrão da Internet</strong>.</p></div>
+          <div class="rfc-list">
+            <a href="https://www.rfc-editor.org/info/rfc1" target="_blank" rel="noreferrer"><strong>RFC 1</strong><span>Host Software • 1969</span></a>
+            <a href="https://www.rfc-editor.org/info/rfc791" target="_blank" rel="noreferrer"><strong>RFC 791</strong><span>IPv4 • 1981</span></a>
+            <a href="https://www.rfc-editor.org/info/rfc8200" target="_blank" rel="noreferrer"><strong>RFC 8200</strong><span>IPv6 • 2017</span></a>
+            <a href="https://www.rfc-editor.org/info/rfc9293" target="_blank" rel="noreferrer"><strong>RFC 9293</strong><span>TCP atual • 2022</span></a>
+          </div>
+        </div>
+
+        <div class="layer-explorer">
+          <div class="layer-intro"><span class="section-kicker">EXPERIÊNCIA 3</span><h3>Onde cada elemento atua?</h3><p>Selecione uma camada para ver sua função. O OSI organiza o problema em sete partes; a Internet opera com a arquitetura TCP/IP.</p></div>
+          <div class="osi-stack" id="osiStack">
+            <button type="button" data-layer="7">7 <strong>Aplicação</strong></button><button type="button" data-layer="6">6 <strong>Apresentação</strong></button><button type="button" data-layer="5">5 <strong>Sessão</strong></button><button type="button" data-layer="4">4 <strong>Transporte</strong></button><button type="button" data-layer="3">3 <strong>Rede</strong></button><button type="button" data-layer="2">2 <strong>Enlace</strong></button><button type="button" data-layer="1">1 <strong>Física</strong></button>
+          </div>
+          <div class="layer-detail" id="layerDetail"><span>Selecione uma camada</span><strong>O modelo separa responsabilidades.</strong><p>Isso facilita o estudo, a padronização e o diagnóstico.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pale-section" id="web" data-track>
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">7 • DO TRANSPORTE À INFORMAÇÃO</span><h2>Internet não é sinônimo de Web</h2></div><span class="chapter-number">1989–95</span></div>
+        <div class="internet-web-grid">
+          <article><span class="big-label">INTERNET</span><h3>A infraestrutura</h3><p>Rede global de redes baseada na arquitetura TCP/IP. Conecta hosts, enlaces e roteadores e transporta diferentes serviços.</p><ul><li>e-mail</li><li>SSH</li><li>voz e vídeo</li><li>Web</li></ul></article>
+          <div class="uses-arrow"><span>utiliza</span>→</div>
+          <article class="web-card"><span class="big-label">WEB</span><h3>Um dos serviços</h3><p>Sistema de documentos e recursos interligados, acessados com navegadores por meio de URLs e HTTP.</p><ul><li><strong>URL</strong> — onde</li><li><strong>HTTP</strong> — como</li><li><strong>HTML</strong> — o quê</li></ul></article>
+        </div>
+        <div class="web-history">
+          <span class="web-year">1989</span><div><h3>Tim Berners-Lee apresenta a proposta no CERN</h3><p>O objetivo era facilitar a organização e o acesso a documentos científicos interligados por hipertexto.</p></div>
+          <span class="web-year">1990</span><div><h3>Servidor, navegador e primeiro site</h3><p>Até o final do ano, os componentes centrais já funcionavam no CERN.</p></div>
+          <span class="web-year">1993</span><div><h3>A tecnologia é disponibilizada publicamente</h3><p>A decisão favoreceu a disseminação aberta da Web.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section timeline-section" id="linha-do-tempo" data-track>
+      <div class="wrap">
+        <div class="section-heading"><div><span class="section-kicker">8 • REORGANIZE A HISTÓRIA</span><h2>Uma sequência de problemas e soluções</h2></div><span class="chapter-number">38 ANOS</span></div>
+        <div class="timeline-scroll"><div class="timeline" id="timeline" aria-label="Linha do tempo da evolução das redes"></div></div>
+        <div class="timeline-detail" id="timelineDetail" aria-live="polite"><strong>1957 • Sputnik</strong><p>A corrida tecnológica acelera investimentos norte-americanos em pesquisa avançada.</p></div>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="flashcards" data-track>
+      <div class="wrap">
+        <div class="section-heading light-heading"><div><span class="section-kicker">9 • REVISÃO ATIVA</span><h2>Flashcards essenciais</h2></div><span class="chapter-number" id="flashCounter">1/12</span></div>
+        <p class="lead max-text">Tente responder mentalmente antes de virar o cartão.</p>
+        <div class="flashcard-shell">
+          <button class="flashcard" id="flashcard" type="button" aria-label="Virar flashcard">
+            <span class="flash-face flash-front"><small>CONCEITO</small><strong id="flashTerm">ARPA</strong><em>Clique para virar</em></span>
+            <span class="flash-face flash-back"><small>EXPLICAÇÃO</small><strong id="flashDefinition">Agência criada em 1958 para financiar pesquisas tecnológicas avançadas nos Estados Unidos.</strong><em>Clique para voltar</em></span>
+          </button>
+          <div class="flash-controls"><button type="button" id="flashPrev" aria-label="Cartão anterior">←</button><div class="flash-dots" id="flashDots"></div><button type="button" id="flashNext" aria-label="Próximo cartão">→</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quiz" data-track>
+      <div class="wrap quiz-wrap">
+        <div class="section-heading"><div><span class="section-kicker">10 • VERIFIQUE A APRENDIZAGEM</span><h2>Quiz final — 10 questões</h2></div><span class="chapter-number" id="quizScore">0/10</span></div>
+        <div class="quiz-intro" id="quizIntro">
+          <div><strong>Como funciona</strong><p>As alternativas são embaralhadas. Depois de responder, você recebe a explicação e pode avançar. A aula é concluída com 7 ou mais acertos.</p></div>
+          <button class="primary-button" id="startQuiz" type="button">Começar quiz</button>
+        </div>
+        <div class="quiz-card" id="quizCard" hidden>
+          <div class="quiz-progress"><span id="questionNumber">Questão 1 de 10</span><div><i id="quizProgressBar"></i></div></div>
+          <span class="question-type" id="questionType">CONCEITO</span>
+          <h3 id="questionText"></h3>
+          <div class="answers" id="answers"></div>
+          <div class="answer-feedback" id="answerFeedback" role="status" aria-live="polite" hidden></div>
+          <button class="secondary-button next-question" id="nextQuestion" type="button" hidden>Próxima questão →</button>
+        </div>
+        <div class="quiz-result" id="quizResult" hidden>
+          <div class="result-ring"><strong id="resultScore">0</strong><span>/10</span></div>
+          <div><span class="section-kicker" id="resultStatus">RESULTADO</span><h3 id="resultTitle"></h3><p id="resultMessage"></p><div class="result-actions"><button class="primary-button" id="retryQuiz" type="button">Refazer quiz</button><button class="secondary-button" id="reviewErrors" type="button" hidden>Revisar erros</button><a class="secondary-button" href="#sintese">Rever síntese</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section synthesis-section" id="sintese" data-track>
+      <div class="wrap">
+        <span class="section-kicker">SÍNTESE</span>
+        <h2>Cada avanço resolveu uma limitação anterior</h2>
+        <div class="synthesis-list">
+          <div><span>Computadores isolados</span><i>→</i><strong>ARPANET: compartilhamento e pacotes</strong></div>
+          <div><span>Meio compartilhado</span><i>→</i><strong>ALOHA e Ethernet: controle de acesso</strong></div>
+          <div><span>Redes incompatíveis</span><i>→</i><strong>TCP/IP: internetworking</strong></div>
+          <div><span>Implementações proprietárias</span><i>→</i><strong>IEEE, RFCs e OSI: padronização</strong></div>
+          <div><span>Informação difícil de navegar</span><i>→</i><strong>Web: hipertexto sobre a Internet</strong></div>
+        </div>
+        <blockquote>A Internet é uma arquitetura construída coletivamente; a Web é uma das grandes aplicações que ela tornou possível.</blockquote>
+      </div>
+    </section>
+
+    <section class="section references" id="referencias">
+      <div class="wrap">
+        <span class="section-kicker">FONTES E APROFUNDAMENTO</span>
+        <h2>Referências da aula</h2>
+        <div class="reference-grid">
+          <a href="https://www.darpa.mil/about/innovation-timeline" target="_blank" rel="noreferrer"><strong>DARPA</strong><span>Innovation Timeline</span></a>
+          <a href="https://www.darpa.mil/news/features/arpanet" target="_blank" rel="noreferrer"><strong>DARPA</strong><span>História da ARPANET</span></a>
+          <a href="https://www.hawaii.edu/news/2020/10/13/alohanet-honored-as-engineering-milestone/" target="_blank" rel="noreferrer"><strong>University of Hawaiʻi</strong><span>ALOHAnet</span></a>
+          <a href="https://www.ieee802.org/" target="_blank" rel="noreferrer"><strong>IEEE 802</strong><span>LAN/MAN Standards Committee</span></a>
+          <a href="https://www.ietf.org/process/rfcs/" target="_blank" rel="noreferrer"><strong>IETF</strong><span>Sobre as RFCs</span></a>
+          <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" target="_blank" rel="noreferrer"><strong>Internet Society</strong><span>Breve história da Internet</span></a>
+          <a href="https://www.iso.org/standard/14252.html" target="_blank" rel="noreferrer"><strong>ISO</strong><span>ISO 7498:1984</span></a>
+          <a href="https://home.cern/science/computing/the-birth-of-the-web/short-history-web/" target="_blank" rel="noreferrer"><strong>CERN</strong><span>Uma breve história da Web</span></a>
+        </div>
+        <details class="video-optional"><summary>Videoaula complementar <span>opcional</span></summary><p>O conteúdo principal está completo nesta página. O vídeo pode ser inserido posteriormente como revisão ou aprofundamento, sem se tornar pré-requisito para realizar o quiz.</p></details>
+      </div>
+    </section>
+
+    <section class="lesson-end">
+      <div class="wrap lesson-end-inner"><div><span>AULA 01 CONCLUÍDA</span><h2>Próxima: componentes, topologias e tipos de rede</h2></div><a class="primary-button" href="../aula02-componentes-topologias/">Ir para a Aula 02 →</a></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>Redes de Computadores • IFSP</span><span>Material interativo • Aula 01</span></div></footer>
+  <script src="app.js"></script>
+</body>
+</html>

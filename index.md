@@ -31,6 +31,12 @@ description: Trilha interativa de Redes de Computadores do IFSP, com teoria, vis
         {% endif %}
         <a class="button button-ghost" href="#metodo">Conhecer o método</a>
       </div>
+      <nav class="ready-lessons" aria-label="Aulas prontas para estudar">
+        <span>Aulas prontas</span>
+        {% for aula in aulas_disponiveis limit:4 %}
+          <a href="{{ aula.url | relative_url }}"><b>{{ aula.numero }}</b><span>{{ aula.titulo }}</span><i aria-hidden="true">↗</i></a>
+        {% endfor %}
+      </nav>
       <p class="hero-note"><span aria-hidden="true">●</span> Material web como experiência principal; vídeo como recurso opcional.</p>
     </div>
     <aside class="course-status" aria-label="Situação da trilha">

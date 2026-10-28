@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aula interativa sobre protocolos, modelos OSI e TCP/IP e encapsulamento.">
+  <title>Aula 03 · Protocolos e modelos de referência</title>
+  <link rel="stylesheet" href="../assets/fundamentos.css">
+</head>
+<body style="--accent:#078c9b;--accent-light:#46d6df">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <a class="brand" href="../../" aria-label="Voltar ao portal do curso"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>Redes de Computadores</strong><small>IFSP · Curso interativo</small></span></a>
+    <div class="top-actions"><button class="icon-button" id="printLesson" type="button" aria-label="Imprimir aula">⎙</button><button class="icon-button" id="themeToggle" type="button" aria-label="Ativar tema escuro">◐</button></div>
+  </header>
+  <div class="progress-shell" aria-hidden="true"><div class="progress-track"><span id="globalProgress"></span></div><span id="progressLabel">0% concluído</span></div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-grid wrap">
+        <div class="hero-copy">
+          <span class="eyebrow">AULA 03 · LINGUAGEM DAS REDES</span>
+          <h1>Regras que tornam<br><em>a comunicação possível</em></h1>
+          <p>Protocolos dividem responsabilidades. Modelos organizam essas funções. O encapsulamento prepara cada mensagem para atravessar a rede.</p>
+          <div class="hero-meta"><span>⏱ 50–70 min</span><span>◎ 10 questões</span><span>◈ laboratório de encapsulamento</span></div>
+          <div class="button-row"><a class="primary-button" href="#objetivos">Iniciar aula <span>↓</span></a><a class="secondary-button" href="../aula02-componentes-topologias/">← Rever Aula 02</a></div>
+        </div>
+        <div class="hero-visual" aria-label="Representação do encapsulamento em camadas">
+          <span class="visual-label">Cada camada acrescenta informações de controle</span>
+          <div class="encapsulation" style="position:absolute;inset:80px 28px 30px">
+            <div class="pdu"><span class="payload">DADOS DA APLICAÇÃO</span></div>
+            <div class="pdu"><span class="l4">TCP</span><span class="payload">DADOS</span></div>
+            <div class="pdu"><span class="l3">IP</span><span class="l4">TCP</span><span class="payload">DADOS</span></div>
+            <div class="pdu"><span class="l2">ETH</span><span class="l3">IP</span><span class="l4">TCP</span><span class="payload">DADOS</span><span class="trail">FCS</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Sumário da aula"><div class="wrap lesson-nav-inner"><span class="nav-label">Nesta aula</span><div class="nav-links"><a href="#objetivos">Objetivos</a><a href="#regras">Regras</a><a href="#protocolos">Protocolos</a><a href="#modelos">Modelos</a><a href="#encapsulamento">Encapsulamento</a><a href="#padroes">Padrões</a><a href="#laboratorio">Laboratório</a><a href="#quiz">Quiz</a></div></div></nav>
+
+    <section class="section" id="objetivos"><div class="wrap"><div class="section-heading"><div><span class="section-kicker">O QUE VOCÊ VAI DOMINAR</span><h2>Separar funções sem perder a visão do todo</h2></div><span class="chapter-number">03</span></div><div class="objective-grid">
+      <article class="objective-card"><b>1</b><strong>Explicar protocolos</strong><p>Identificar sintaxe, semântica, sincronização e resposta.</p></article>
+      <article class="objective-card"><b>2</b><strong>Comparar modelos</strong><p>Relacionar as sete camadas OSI às quatro camadas TCP/IP.</p></article>
+      <article class="objective-card"><b>3</b><strong>Seguir uma PDU</strong><p>Acompanhar dados, segmento, pacote, quadro e bits.</p></article>
+      <article class="objective-card"><b>4</b><strong>Localizar padrões</strong><p>Distinguir os papéis de IETF, IEEE e ISO.</p></article>
+    </div></div></section>
+
+    <section class="section soft" id="regras"><div class="wrap"><div class="section-heading"><div><span class="section-kicker">1 · UM PROTOCOLO É UM ACORDO</span><h2>Não basta falar: é preciso falar do mesmo modo</h2><p>Protocolos definem como mensagens são formadas, interpretadas, ordenadas e confirmadas.</p></div><span class="chapter-number">01</span></div><div class="card-grid">
+      <article class="info-card"><span class="icon">{ }</span><strong>Sintaxe</strong><p>Estrutura, campos, ordem e tamanho da mensagem.</p></article>
+      <article class="info-card"><span class="icon">≡</span><strong>Semântica</strong><p>Significado de cada campo e ação esperada.</p></article>
+      <article class="info-card"><span class="icon">◷</span><strong>Sincronização</strong><p>Quando transmitir, a que taxa e por quanto tempo aguardar.</p></article>
+      <article class="info-card"><span class="icon">↩</span><strong>Resposta</strong><p>Confirmação, erro, retransmissão ou continuidade do diálogo.</p></article>
+    </div><div class="note" style="margin-top:24px"><strong>Analogia útil:</strong> pessoas podem usar o mesmo idioma e ainda falhar se uma fala fora de hora, ignora o contexto ou não sabe como confirmar o recebimento.</div></div></section>
+
+    <section class="section" id="protocolos"><div class="wrap"><div class="section-heading"><div><span class="section-kicker">2 · UMA SUÍTE, MUITAS FUNÇÕES</span><h2>Nenhum protocolo resolve tudo sozinho</h2><p>A comunicação real combina protocolos que cooperam em diferentes níveis.</p></div><span class="chapter-number">02</span></div><div class="concept-flow">
+      <article><b>HTTP</b><span>pedido de recurso Web</span></article><i>↓</i><article><b>TCP</b><span>entrega fim a fim</span></article><i>↓</i><article><b>IP</b><span>endereços e rota</span></article><i>↓</i><article><b>Ethernet</b><span>entrega no enlace</span></article><i>↓</i><article><b>Física</b><span>sinais e bits</span></article>
+    </div><div class="split" style="margin-top:42px"><div><h3>Serviço e protocolo são diferentes</h3><p class="lead">Uma camada oferece um serviço à camada superior e utiliza o serviço da camada inferior. O protocolo descreve a comunicação lógica entre entidades equivalentes.</p></div><div class="feature-list"><article><strong>Modularidade</strong><p>Uma tecnologia pode evoluir sem reescrever toda a pilha.</p></article><article><strong>Interoperabilidade</strong><p>Implementações distintas comunicam quando seguem padrões compatíveis.</p></article><article><strong>Diagnóstico</strong><p>Separar funções ajuda a localizar onde a comunicação falhou.</p></article></div></div></div></section>
+
+    <section class="section soft" id="modelos"><div class="wrap"><div class="section-heading"><div><span class="section-kicker">3 · MODELOS DE REFERÊNCIA</span><h2>OSI explica; TCP/IP sustenta a Internet</h2><p>O modelo OSI organiza funções em sete camadas. O modelo TCP/IP agrupa responsabilidades de acordo com a arquitetura implementada na Internet.</p></div><span class="chapter-number">03</span></div><div class="layer-board">
+      <div class="layer-stack" id="osiStack">
+        <button class="layer-button active" type="button" data-layer="7"><b>7</b><span>Aplicação</span></button><button class="layer-button" type="button" data-layer="6"><b>6</b><span>Apresentação</span></button><button class="layer-button" type="button" data-layer="5"><b>5</b><span>Sessão</span></button><button class="layer-button" type="button" data-layer="4"><b>4</b><span>Transporte</span></button><button class="layer-button" type="button" data-layer="3"><b>3</b><span>Rede</span></button><button class="layer-button" type="button" data-layer="2"><b>2</b><span>Enlace</span></button><button class="layer-button" type="button" data-layer="1"><b>1</b><span>Física</span></button>
+      </div>
+      <article class="layer-detail" aria-live="polite"><small id="layerKicker">CAMADA 7 · DADOS</small><h3 id="layerTitle">Aplicação</h3><p id="layerDescription">Fornece serviços de rede diretamente às aplicações do usuário e define protocolos para funções como Web, nomes e correio eletrônico.</p><div class="protocol-tags" id="layerExamples"><span>HTTP</span><span>DNS</span><span>SMTP</span></div><div class="note" style="margin-top:28px"><strong>No TCP/IP:</strong> <span id="tcpMapping">integra a camada de Aplicação.</span></div></article>
+    </div></div></section>
+
+    <section class="section" id="encapsulamento"><div class="wrap"><div class="section-heading"><div><span class="section-kicker">4 · PREPARANDO A MENSAGEM</span><h2>Encapsular é adicionar contexto para cada etapa</h2><p>No emissor, cada camada acrescenta informações. No receptor, o processo é invertido: desencapsulamento.</p></div><span class="chapter-number">04</span></div><div class="lab">
+      <div class="lab-header"><div><span class="section-kicker">EXPERIÊNCIA INTERATIVA</span><h3>Construa a unidade de dados</h3></div><p>Avance pelas camadas e observe o nome da PDU e os campos adicionados.</p></div>
+      <div class="encapsulation" id="encapsulationStage"><div class="pdu"><span class="payload">GET /aula03 HTTP/1.1</span></div></div>
+      <div class="step-actions"><button class="active" type="button" data-step="0">Aplicação</button><button type="button" data-step="1">Transporte</button><button type="button" data-step="2">Internet</button><button type="button" data-step="3">Acesso à rede</button><button type="button" data-step="4">Física</button></div>
+      <div class="lab-output"><article><small>PDU</small><strong id="pduName">Dados</strong></article><article><small>Informação acrescentada</small><strong id="pduHeader">Mensagem da aplicação</strong></article><article><small>Objetivo</small><strong id="pduPurpose">Representar a solicitação do usuário</strong></article></div>
+    </div></div></section>
+
+    <section class="section soft" id="padroes"><div class="wrap"><div class="section-heading"><div><span class="section-kicker">5 · QUEM ORGANIZA AS REGRAS</span><h2>Organismos diferentes, escopos complementares</h2></div><span class="chapter-number">05</span></div><div class="card-grid">
+      <article class="info-card"><span class="icon">RFC</span><strong>IETF</strong><p>Desenvolve e mantém padrões e práticas para a Internet, publicados na série RFC.</p></article><article class="info-card"><span class="icon">802</span><strong>IEEE</strong><p>Padroniza tecnologias de LAN/MAN, como Ethernet 802.3 e Wi-Fi 802.11.</p></article><article class="info-card"><span class="icon">ISO</span><strong>ISO/IEC</strong><p>Produz normas internacionais; o modelo OSI fornece uma base conceitual de referência.</p></article><article class="info-card"><span class="icon">W3C</span><strong>W3C</strong><p>Desenvolve padrões abertos para tecnologias da Web, como HTML e CSS.</p></article>
+    </div><div class="note" style="margin-top:24px"><strong>Atenção:</strong> RFC é uma série documental. Uma RFC pode ser padrão, informativa, experimental, histórica ou uma boa prática corrente.</div></div></section>
+
+    <section class="section dark" id="laboratorio"><div class="wrap"><div class="section-heading"><div><span class="section-kicker">6 · LEITURA POR CAMADAS</span><h2>Um acesso Web envolve várias conversas simultâneas</h2><p>O usuário percebe uma página. A rede processa nomes, conexões, endereços, quadros e sinais.</p></div><span class="chapter-number">06</span></div><div class="concept-flow" style="color:var(--ink)"><article><b>DNS</b><span>nome → endereço</span></article><i>→</i><article><b>TCP</b><span>conversa confiável</span></article><i>→</i><article><b>HTTP</b><span>solicitação e resposta</span></article><i>→</i><article><b>IP</b><span>entrega entre redes</span></article><i>→</i><article><b>Ethernet</b><span>próximo salto</span></article></div><div class="remotion-slot" style="color:var(--ink)"><div><small>ANIMAÇÃO REMOTION · AULA 03</small><h3>Encapsulamento quadro a quadro</h3><p>Cabeçalhos TCP, IP e Ethernet entram em cena; o quadro vira bits, atravessa o enlace e é desencapsulado no destino.</p></div><span class="remotion-badge">complementar</span></div></div></section>
+
+    <section class="section dark" id="flashcards"><div class="wrap narrow"><div class="section-heading"><div><span class="section-kicker">REVISÃO ATIVA</span><h2>Flashcards essenciais</h2><p>Clique para virar e use as setas para avançar.</p></div><span class="chapter-number">12</span></div><div class="flashcard-shell"><button class="flashcard" id="flashcard" type="button" aria-label="Virar flashcard"><span class="flash-face flash-front"><small>CONCEITO</small><strong id="flashTerm"></strong><em>Clique para virar</em></span><span class="flash-face flash-back"><small>EXPLICAÇÃO</small><strong id="flashDefinition"></strong><em>Clique para voltar</em></span></button><div class="flash-controls"><button id="flashPrev" type="button" aria-label="Flashcard anterior">←</button><div class="flash-dots" id="flashDots" aria-hidden="true"></div><span id="flashCounter">1/12</span><button id="flashNext" type="button" aria-label="Próximo flashcard">→</button></div></div></div></section>
+
+    <section class="section" id="quiz"><div class="wrap quiz-wrap"><div class="section-heading"><div><span class="section-kicker">VERIFIQUE A APRENDIZAGEM</span><h2>Quiz final · 10 questões</h2></div><span class="chapter-number" id="quizScore">0/10</span></div><div class="quiz-intro" id="quizIntro"><div><strong>Como funciona</strong><p>Responda, leia a justificativa e avance. A meta de conclusão é 7/10.</p></div><button class="primary-button" id="startQuiz" type="button">Começar quiz</button></div><div class="quiz-card" id="quizCard" hidden><div class="quiz-progress"><span id="questionNumber"></span><div><i id="quizProgressBar"></i></div></div><span class="question-type" id="questionType"></span><h3 id="questionText"></h3><div class="answers" id="answers"></div><div class="answer-feedback" id="answerFeedback" hidden></div><button class="primary-button next-question" id="nextQuestion" type="button" hidden>Próxima questão →</button></div><div class="quiz-result" id="quizResult" hidden><div class="result-ring"><strong id="resultScore">0</strong><span id="resultTotal">/10</span></div><div><span class="section-kicker" id="resultStatus"></span><h3>Resultado da Aula 03</h3><p id="resultMessage"></p><div class="result-actions"><button class="primary-button" id="retryQuiz" type="button">Refazer quiz</button><button class="secondary-button" id="reviewErrors" type="button">Revisar erros</button></div></div></div></div></section>
+
+    <section class="section synthesis" id="sintese"><div class="wrap narrow"><span class="section-kicker">SÍNTESE</span><h2>Camadas não são paredes: são responsabilidades coordenadas.</h2><div class="synthesis-list"><div><span>Protocolos</span><i>→</i><strong>definem regras observáveis</strong></div><div><span>Modelos</span><i>→</i><strong>organizam funções e vocabulário</strong></div><div><span>Encapsulamento</span><i>→</i><strong>adiciona controle para cada etapa</strong></div><div><span>Padrões abertos</span><i>→</i><strong>permitem interoperabilidade</strong></div></div><blockquote>Ao diagnosticar uma rede, pergunte: qual função deveria acontecer aqui, qual protocolo a executa e qual evidência comprova seu funcionamento?</blockquote></div></section>
+
+    <section class="section references"><div class="wrap"><span class="section-kicker">FONTES E APROFUNDAMENTO</span><h2>Referências da aula</h2><div class="reference-grid"><a href="https://committee.iso.org/standard/20269.html" target="_blank" rel="noopener"><strong>ISO/IEC 7498-1</strong><span>Modelo básico OSI</span></a><a href="https://www.rfc-editor.org/rfc/rfc1122" target="_blank" rel="noopener"><strong>RFC 1122</strong><span>Requirements for Internet Hosts</span></a><a href="https://www.ietf.org/process/rfcs/" target="_blank" rel="noopener"><strong>IETF</strong><span>Processo e série RFC</span></a><a href="https://www.ieee802.org/" target="_blank" rel="noopener"><strong>IEEE 802</strong><span>Padrões LAN/MAN</span></a></div><details class="video-optional"><summary>Videoaula complementar <span>opcional</span></summary><p>A animação Remotion reforçará o encapsulamento. A leitura, o laboratório e o quiz já formam o percurso completo.</p></details></div></section>
+  </main>
+  <section class="lesson-end"><div class="wrap lesson-end-inner"><div><span>PRÓXIMA AULA</span><h2>Camada física e meios de transmissão</h2></div><a class="primary-button" href="../aula04-camada-fisica-meios/">Ir para a Aula 04 →</a></div></section>
+  <footer><div class="wrap"><span>IFSP · Redes de Computadores</span><span>Aula 03 · Material web principal</span></div></footer>
+  <script defer src="lesson.js"></script><script defer src="../assets/fundamentos.js"></script>
+</body>
+</html>
