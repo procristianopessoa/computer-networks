@@ -1,0 +1,9 @@
+/* Identidade visual compartilhada pelas aulas 07 e 08. */
+:root{--paper:#f7faf8;--white:#fff;--ink:#152d38;--muted:#58717c;--line:#ccdad5;--blue:#188447;--cyan:#078c9b;--lime:#31c46b;--orange:#cf8618;--red:#c9383e;--dark:#071d2b;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:var(--sans)}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper)}
+h1,h2,h3,h4{font-family:var(--sans);letter-spacing:-.035em}h1{font-weight:800}h2{font-weight:800}h3{font-weight:750}
+.top{background:rgba(247,250,248,.95);border-color:var(--line)}.brand{color:var(--blue)}
+.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 75% 38%,rgba(24,132,71,.35),transparent 30%),linear-gradient(135deg,#061923,#0a2e3d 55%,#0d4737);border:0}
+.hero .wrap{position:relative;z-index:1}.hero::before{content:"";position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.hero h1{color:#fff;letter-spacing:-.055em}.hero .lead{color:#d4e5df}.hero .kicker,.hero .label{color:#70e5a1}.hero .chip{background:rgba(255,255,255,.1);color:#e1f3ec;border-color:rgba(255,255,255,.24)}
+.section-label,.label,.kicker{color:#188447}.lesson-nav,nav{border-color:var(--line)}.lesson-nav a,nav a{color:#188447}.card,.visual,.quiz,.face{border-color:var(--line);border-radius:16px}.note{border-left-color:#078c9b;background:#eaf5f2}.note.warn,.warn{border-left-color:#cf8618;background:#fff5e7}.button{background:#188447;color:#fff}.choice:hover,.choice.selected{border-color:#188447;background:#eaf5ee}.flash .back{background:#eaf5ee}.definition b,.card h3{color:#188447}
