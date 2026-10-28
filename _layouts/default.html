@@ -4,17 +4,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="theme-color" content="#071d2b">
     <title>{{ page.title | default: site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/catalogo.css' | relative_url }}">
   </head>
   <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="{{ '/' | relative_url }}">IFSP · Redes de Computadores</a>
-        <span>Compreender · Observar · Aplicar</span>
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="Página inicial de Redes de Computadores">
+          <span class="brand-mark" aria-hidden="true">RC</span>
+          <span><b>Redes de Computadores</b><small>IFSP · Campus Guarulhos</small></span>
+        </a>
+        <nav class="site-nav" aria-label="Navegação principal">
+          <a href="{{ '/' | relative_url }}#metodo">Método</a>
+          <a href="{{ '/' | relative_url }}#trilha">Trilha</a>
+          <a href="{{ '/' | relative_url }}#competencias">Competências</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema"><span aria-hidden="true">◐</span></button>
       </div>
     </header>
-    <main class="wrap">{{ content }}</main>
-    <footer class="wrap">© 2026 · IFSP · Prof. Cristiano Pessoa</footer>
+    <main id="conteudo">{{ content }}</main>
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <a class="brand footer-brand" href="{{ '/' | relative_url }}">
+          <span class="brand-mark" aria-hidden="true">RC</span>
+          <span><b>Redes de Computadores</b><small>Material didático interativo</small></span>
+        </a>
+        <p>Do primeiro pacote ao troubleshooting: conceitos, visualizações, prática e verificação de aprendizagem.</p>
+        <p class="copyright">© 2026 · IFSP · Prof. Cristiano Pessoa</p>
+      </div>
+    </footer>
+    <script src="{{ '/assets/js/catalogo.js' | relative_url }}"></script>
   </body>
 </html>
