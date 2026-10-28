@@ -1,0 +1,10 @@
+.binary-controls { display:flex; flex-wrap:wrap; align-items:end; gap:14px; }
+.binary-controls label { display:grid; gap:8px; font-weight:700; }
+.binary-controls select { padding:10px; min-height:48px; background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:8px; font:inherit; }
+.binary-layout { display:grid; grid-template-columns:minmax(220px,400px) minmax(0,1fr); gap:32px; margin:26px 0; }
+.binary-grid { display:grid; grid-template-columns:repeat(16,1fr); gap:2px; aspect-ratio:1; padding:8px; background:var(--navy); border-radius:12px; }
+.binary-grid span { border:1px solid; border-radius:2px; transition:background .25s,opacity .25s; }
+.binary-masks { white-space:pre-wrap; overflow-wrap:anywhere; font:600 clamp(.75rem,1.2vw,1rem)/1.8 ui-monospace,Consolas,monospace; padding:16px; border-radius:10px; background:var(--pale); }
+.binary-simulator details summary { cursor:pointer; font-weight:700; }
+@media(max-width:700px) { .binary-layout { grid-template-columns:1fr; } .binary-grid { max-width:400px; } }
+@media(prefers-reduced-motion:reduce) { .binary-grid span { transition:none; } }
