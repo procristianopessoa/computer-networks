@@ -172,5 +172,5 @@ window.LESSON_DATA = {
       "e": "A RFC 3021 descreve a utilização dos dois endereços no ponto a ponto."
     }
   ],
-  "videoTranscript": "0–20 s: /24 é dividido em quatro /26. 20–40 s: 192.168.10.77 é localizado no bloco .64–.127. 40–60 s: rede, hosts utilizáveis e broadcast são destacados."
+  "videoTranscript": "0–30 s: a fronteira avança de /24 a /26 e cada bloco diminui. 30–60 s: a fronteira volta para /24, /16 e /8; cada bloco cresce. A contagem considera a rede-base 10.0.0.0/8."
 };
